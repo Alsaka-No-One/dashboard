@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <%- include("includes/head.ejs", {params: {
+        css: ["auth"]
+    }}); %>
+    <body>
+        <%- include("includes/navbar.ejs", {user, page}); %>
+        <div id="alert" class="alert">
+            Hey, listen!
+        </div>
+        <div class="page" id="app" v-on:input="hideError">
+            <div class="auth-form" v-bind:class="{'flipped': isFlipped}">
+                <div class="side signin">
+                    <div>
+                        <form action="api/signin" method="post" v-on:submit.prevent="auth">
+                            <h1>Sign in</h1>
+                            <label for="username">Username</label>
+                            <input type="text" name="username" autocomplete="username" required="true">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" autocomplete="current-password" required="true">
+                            <p class="centered">
+                                <button type="submit" class="green">Sign in</button>
+                            </p>
+                            <p class="centered">
+                                New here? <a @click="flipCard">Sign up!</a>
+                            </p>
+                        </form>
+                    </div>
+                    <div>
+                        <h1>Sign in with...</h1>
+                        <div class="auth-buttons">
+                            <button class="service-auth telegram" @click="authTelegram"><i></i>Telegram</button>
+                            <button class="service-auth discord" @click="authDiscord"><i></i>Discord</button>
+                            <button class="service-auth gitlab" @click="authGitlab"><i></i>GitLab</button>
+                            <button class="service-auth github" @click="authGithub"><i></i>GitHub</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="side signup">
+                    <div>
+                        <form action="api/signup" method="post" v-on:submit.prevent="auth">
+                            <h1>Sign up</h1>
+                            <label for="username">Username</label>
+                            <input type="text" name="username" autocomplete="username" required="true">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" autocomplete="new-password" required="true">
+                            <p class="centered">
+                                <button type="submit" class="green">Sign up</button>
+                            </p>
+                            <p class="centered">
+                                Have an account? <a @click="flipCard">Sign in!</a>
+                            </p>
+                        </form>
+                    </div>
+                    <div>
+                        <h1>Or sign in with...</h1>
+                        <div class="auth-buttons">
+                            <button class="service-auth telegram" @click="authTelegram"><i></i>Telegram</button>
+                            <button class="service-auth discord" @click="authDiscord"><i></i>Discord</button>
+                            <button class="service-auth gitlab" @click="authGitlab"><i></i>GitLab</button>
+                            <button class="service-auth github" @click="authGithub"><i></i>GitHub</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>const is_flipped = <%- is_sign_up%>;</script>
+        <script src="js/vue.min.js" charset="utf-8"></script>
+        <script src="https://telegram.org/js/telegram-widget.js" charset="utf-8"></script>
+        <script src="js/auth.js" charset="utf-8"></script>
+    </body>
+</html>

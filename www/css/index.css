@@ -1,0 +1,32 @@
+body {
+    background: var(--gray-light);
+    /* height: 200vh; */
+}
+.jumbotron {
+    width: 100vw;
+    height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.jumbotron > * { margin: 10px; }
+.jumbotron > h1 {
+    font-size: 42pt;
+    text-shadow: 1px 1px 0 rgba(255,255,255,.5);
+}
+.jumbotron > p { font-size: 18pt; }
+@keyframes scroll-arrow-point {
+    0%   {opacity: 0; transform: translate(0, -20px);}
+    20%  {opacity: .1;}
+    80%  {opacity: .1;}
+    100% {opacity: 0; transform: translate(0, 0);}
+}
+.scroll-arrow {
+    position: absolute;
+    bottom: 0;
+}
+.scroll-arrow > svg {
+    animation: scroll-arrow-point infinite 1s;
+}

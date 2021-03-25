@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <%- include("includes/head.ejs", {params: {
+        title: "Admin panel",
+        css: ["admin", "fa-icons"]
+    }}); %>
+    <body>
+        <%- include("includes/navbar.ejs", {page, user}); %>
+        <div id="app" class="container">
+            <h1>Admin panel</h1>
+            <hr>
+            <h2>Users</h2>
+            <div class="table">
+                <div class="head">
+                    <div>ID</div>
+                    <div>Username</div>
+                    <div>Services</div>
+                    <div>Actions</div>
+                </div>
+                <div v-bind:class="{row: 1, deleted: user.isDeleted}" v-for="(user, id) in users">
+                    <div v-text="user.id"></div>
+                    <div v-text="user.username"></div>
+                    <div>
+                        <div v-bind:class="{'service-icon': 1, telegram: 1, active: user.services.includes('telegram')}"></div>
+                        <div v-bind:class="{'service-icon': 1, discord: 1, active: user.services.includes('discord')}"></div>
+                        <div v-bind:class="{'service-icon': 1, gitlab: 1, active: user.services.includes('gitlab')}"></div>
+                        <div v-bind:class="{'service-icon': 1, github: 1, active: user.services.includes('github')}"></div>
+                    </div>
+                    <div>
+                        <i v-bind:class="{fa: 1, 'fa-star': 1, active: user.is_admin}" @click="toggleAdmin(user)"></i>
+                        <i v-bind:class="{fa: 1, 'fa-ban': 1, active: user.is_banned}" @click="toggleBanned(user)"></i>
+                        <i v-bind:class="{fa: 1, 'fa-trash': 1}" @click="deleteUser(user)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/vue.min.js" charset="utf-8"></script>
+        <script src="/js/admin.js" charset="utf-8"></script>
+    </body>
+</html>

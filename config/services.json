@@ -1,0 +1,78 @@
+{
+    "telegram": {
+        "is_linkable": true,
+        "widgets": {}
+    },
+    "discord": {
+        "is_linkable": true,
+        "widgets": {}
+    },
+    "gitlab": {
+        "is_linkable": true,
+        "widgets": {
+            "repository": {
+                "description": "Monitor a Gitlab repository",
+                "params": {
+                    "repository_id": {"name": "Repository ID", "type": "number", "required": true, "min": 0}
+                }
+            },
+            "profile": {
+                "description": "Display a user profile",
+                "params": {
+                    "username": {"type": "string", "required": true, "minlength": 1}
+                }
+            }
+        }
+    },
+    "github": {
+        "is_linkable": true,
+        "widgets": {
+            "repository": {
+                "description": "Monitor a Github repository",
+                "params": {
+                    "namespace": {"name": "Repository namespace", "type": "string", "required": true, "minlength": 1},
+                    "name": {"name": "Repository name", "type": "string", "required": true, "minlength": 1}
+                }
+            },
+            "profile": {
+                "description": "Display a user profile",
+                "params": {
+                    "username": {"type": "string", "required": true, "minlength": 1}
+                }
+            }
+        }
+    },
+    "weather": {
+        "widgets": {
+            "weather": {
+                "description": "Display temperature for a location",
+                "params": {
+                    "city": {"type": "string", "required": true, "minlength": 3}
+                }
+            }
+        }
+    },
+    "exchange": {
+        "widgets": {
+            "exchange": {
+                "description": "Display the exchange rates from one currency to another",
+                "params": {
+                    "from": {"type": "enum", "values": ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "ISK", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"], "required": true},
+                    "to": {"type": "enum", "values": ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "ISK", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"], "required": true}
+                }
+            }
+        }
+    },
+    "time": {
+        "widgets": {
+            "clock": {
+                "description": "Display the time for a location",
+                "params": {
+                    "zone": {"type": "string", "required": true, "minlength": 3},
+                    "city": {"type": "string", "required": true, "minlength": 3},
+                    "type": {"type": "enum", "values": ["analog", "digital"], "required": true}
+                }
+            }
+        }
+    }
+}

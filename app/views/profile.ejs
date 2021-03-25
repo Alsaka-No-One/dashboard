@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <%- include("includes/head.ejs", {params: {
+        title: "Profile",
+        css: ["profile"]
+    }}); %>
+    <body>
+        <%- include("includes/navbar.ejs", {page, user}); %>
+        <div id="app" class="container">
+            <h1>Profile</h1>
+            <hr>
+            <h2>General</h2>
+            <fieldset>
+                <div class="row">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" value="<%-user.username%>" readonly="true">
+                </div>
+            </fieldset>
+            <h2>Services</h2>
+            <fieldset class="services">
+                <button
+                    v-for="(connected, name) in services"
+                    v-bind:class="['service-auth'].concat([name])"
+                    v-html="`<i></i> ${connected ? 'Unl' : 'L'}ink ${name}`"
+                    @click="onClickService(name)"
+                    name="button"
+                ></button>
+            </fieldset>
+            <h2>Danger zone</h2>
+            <div class="centered">
+                <button class="red outline" type="button" @click="onClickDelete">Delete my account</button>
+            </div>
+        </div>
+        <script src="/js/vue.min.js" charset="utf-8"></script>
+        <script src="https://telegram.org/js/telegram-widget.js" charset="utf-8"></script>
+        <script src="/js/profile.js" charset="utf-8"></script>
+    </body>
+</html>

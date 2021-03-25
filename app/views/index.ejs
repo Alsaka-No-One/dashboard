@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <%- include("includes/head.ejs", {params: {
+        css: ["index"]
+    }}); %>
+    <body>
+        <%- include("includes/navbar.ejs", {page, user}); %>
+        <div class="jumbotron">
+            <h1>Dashboard</h1>
+            <p>
+                All your information in the blink of an eye
+            </p>
+            <p>
+                <a href="/signup" class="btn large outline green">Get started</a>
+                <a href="/signin" class="btn large outline blue">Sign in</a>
+            </p>
+        </div>
+        <script src="/js/vue.min.js" charset="utf-8"></script>
+        <script src="/js/index.js" charset="utf-8"></script>
+    </body>
+</html>

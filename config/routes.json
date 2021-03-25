@@ -1,0 +1,22 @@
+{
+    "/":                        "index.js",
+    "/signup":                  "signup.js",
+    "/signin":                  "signin.js",
+    "/signout":                 "signout.js",
+    "/profile":                 "profile.js",
+    "/admin":                   "admin.js",
+    "/authorize/:service":      "authorize.js",
+    "/about.json":              "api/about.js",
+    "/api/signup":              "api/signup.js",
+    "/api/signin":              "api/signin.js",
+    "/api/services":            "api/services.js",
+    "/api/unlink/:service":     "api/unlink.js",
+    "/api/linked_services":     "api/linked_services.js",
+    "/api/widgets":             "api/widgets.js",
+    "/api/widgets/order":       "api/order_widgets.js",
+    "/api/widget":              "api/widget.js",
+    "/api/widget/:widget_id":   "api/widget.js",
+    "/api/users":               "api/users.js",
+    "/api/user":                "api/user.js",
+    "/api/user/:id":            "api/user.js"
+}

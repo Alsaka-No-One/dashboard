@@ -1,0 +1,19 @@
+<%
+    var params = Object.assign({
+        title:          "",
+        description:    "All your information in the blink of an eye",
+        css:            []
+    }, params);
+%>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%- params.title + (params.title ? " | " : "") %>Dashboard</title>
+    <link rel="icon" type="image/png" href="/img/favicon.webp">
+    <% ["master"].concat(params.css).forEach(css_filename => { %>
+        <link rel="stylesheet" type="text/css" href="/css/<%-css_filename%>.css">
+    <% }); %>
+    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="preload" as="image" href="img/logo_hover.svg">
+    <meta name="description" content="<%- params.description %>"/>
+</head>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <%- include("includes/head.ejs", {params: {css: ["error"]}}); %>
+    <body>
+        <%- include("includes/navbar.ejs", {page, user}); %>
+        <div class="jumbotron">
+            <h1><%=status%></h1>
+            <p>
+                <%=description%>
+            </p>
+            <a href="/">Return to homepage</a>
+        </div>
+    </body>
+</html>

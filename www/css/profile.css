@@ -1,0 +1,52 @@
+fieldset {
+    border: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    margin: 30px 0 20px 0;
+}
+
+label {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+fieldset > .row {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset.services { display: block; }
+
+button.service-auth {
+    text-align: left;
+    border-radius: 128px;
+    padding: 10px 20px;
+}
+button.service-auth > i {
+    display: inline-block;
+    margin: 0 16px -5px 0;
+    height: 24px;
+    width: 24px;
+    background-size: cover;
+}
+button.service-auth.telegram { --bg-color: #aaf; }
+button.service-auth.telegram > i {
+    background: url("../img/services/telegram.svg") no-repeat;
+}
+button.service-auth.github { --bg-color: #24292e; }
+button.service-auth.github > i {
+    background: url("../img/services/github.svg") no-repeat;
+}
+button.service-auth.gitlab { --bg-color: #292961; }
+button.service-auth.gitlab > i {
+    background: url("../img/services/gitlab.svg") no-repeat;
+}
+button.service-auth.discord { --bg-color: #36393f; }
+button.service-auth.discord > i {
+    background: url("../img/services/discord.svg") no-repeat;
+}

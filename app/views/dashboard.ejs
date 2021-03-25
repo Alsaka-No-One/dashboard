@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <%- include("includes/head.ejs", {params: {
+        css: ["dashboard", "widgets", "fa-icons"]
+    }}); %>
+    <body class="loading">
+        <div id="app">
+            <div id="new-popup" class="popup">
+                <h1>New widget</h1>
+                <div class="body">
+                    <select v-model="selectedServiceId">
+                        <option value="" disabled>Select service...</option>
+                        <option :value="name" v-text="name[0].toLocaleUpperCase() + name.substr(1)" v-for="(service, name) in services"></option>
+                    </select>
+                    <select v-if="selectedServiceId" v-model="selectedWidgetId">
+                        <option value="" disabled>Select widget...</option>
+                        <option :value="name" v-text="name[0].toLocaleUpperCase() + name.substr(1)" v-for="(widget, name) in services[selectedServiceId].widgets"></option>
+                    </select>
+                    <h2 v-if="selectedWidgetId" v-text="selectedWidgetId[0].toLocaleUpperCase() + selectedWidgetId.substr(1) + ' widget'"></h2>
+                    <p v-if="selectedWidget" v-text="selectedWidget.description"></p>
+                    <h2 v-if="selectedWidget">Parameters</h2>
+                    <widget-params v-bind:widget="selectedWidget" v-bind:widgetId="selectedWidgetId" @cancel="toggleNewPopup(false)" @submit="createWidget"/>
+                </div>
+            </div>
+            <div id="overlay" class="overlay" @click="toggleNewPopup(false)"></div>
+            <%- include("includes/navbar.ejs", {page, user}); %>
+            <div class="dashboard" v-bind:class="{dragging: !!draggedWidget}">
+                <div class="widget-slot" v-for="(widget, id) in widgets"></div>
+                <div v-bind:class="{widget: true, [widget.service + '-' + widget.type]: true, flipped: flippedWidgetId == id}" v-bind:data-order="widget.order" v-for="(widget, id) in widgets">
+                    <div class="side">
+                        <header @mousedown="startDraggingWidget($event, widget)" @touchstart="startDraggingWidget($event, widget)">
+                            <h1 v-text="widget.type[0].toLocaleUpperCase() + widget.type.substr(1)"></h1>
+                            <div class="icons">
+                                <i class="fa fa-wrench" @click="flippedWidgetId = id"></i>
+                                <i class="fa fa-times" @click="deleteWidget(id)"></i>
+                            </div>
+                        </header>
+                        <component ref="widget" :is="`${widget.service}-${widget.type}-widget`" :id="id"/>
+                    </div>
+                    <div class="side">
+                        <widget-params v-if="widget && services[widget.service]" v-bind:widget="services[widget.service].widgets[widget.type]" v-bind:widgetId="null" v-bind:defaults="widget.data" @cancel="flippedWidgetId = null" @submit="updateWidget($event, id)"/>
+                    </div>
+                </div>
+                <div class="widget new" @click="toggleNewPopup(true)">
+                    <i class="fa fa-plus"></i>
+                </div>
+            </div>
+        </div>
+        <script src="/js/vue.min.js" charset="utf-8"></script>
+        <script src="/js/widgets.js" charset="utf-8" type="module"></script>
+        <script src="/js/dashboard.js" charset="utf-8" defer></script>
+    </body>
+</html>

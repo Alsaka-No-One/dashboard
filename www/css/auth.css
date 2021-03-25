@@ -1,0 +1,112 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 60px);
+}
+
+.alert {
+    position: absolute;
+    background: #faa;
+    z-index: 1001;
+    top: 70px;
+    left: 50%;
+    right: 0;
+    width: 200px;
+    margin-left: -100px;
+    padding: 20px;
+    color: var(--red);
+    border: 1px solid var(--red);
+    visibility: collapse;
+    border-radius: 5px;
+    opacity: 0;
+    margin-top: -20px;
+    transition: all .2s ease-out;
+}
+
+.alert.shown {
+    margin-top: 0;
+    visibility: visible;
+    opacity: 1;
+}
+
+.page {
+    perspective: 1e3px;
+}
+.auth-form {
+    width: 100%;
+    height: 410px;
+    width: 600px;
+    transform-style: preserve-3d;
+    transition: transform .5s ease-in-out;
+}
+.auth-form.flipped {
+    transform: rotateY(180deg);
+}
+.side {
+    height: 350px;
+    /* margin-top: 0; */
+    width: 600px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid gray;
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    backface-visibility: hidden;
+}
+.side.signup { transform: rotateY(180deg); }
+.side > div {
+    flex: 1;
+    padding: 20px;
+}
+.side > div:nth-child(2) {
+    color: #fff;
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+}
+.side h1 { text-align: center; }
+
+.side label {
+    display: block;
+    margin: 10px 0;
+}
+.side input {
+    width: 100%;
+    box-sizing: border-box;
+}
+.side p { margin-bottom: 0; }
+
+.auth-buttons {
+    display: flex;
+    flex-direction: column;
+}
+button.service-auth {
+    text-align: left;
+    border-radius: 128px;
+    padding: 10px 20px;
+}
+button.service-auth > i {
+    display: inline-block;
+    margin: 0 16px -5px 0;
+    height: 24px;
+    width: 24px;
+    background-size: cover;
+}
+button.service-auth.telegram { --bg-color: #aaf; }
+button.service-auth.telegram > i {
+    background: url("../img/services/telegram.svg") no-repeat;
+}
+button.service-auth.github { --bg-color: #24292e; }
+button.service-auth.github > i {
+    background: url("../img/services/github.svg") no-repeat;
+}
+button.service-auth.gitlab { --bg-color: #292961; }
+button.service-auth.gitlab > i {
+    background: url("../img/services/gitlab.svg") no-repeat;
+}
+button.service-auth.discord { --bg-color: #36393f; }
+button.service-auth.discord > i {
+    background: url("../img/services/discord.svg") no-repeat;
+}

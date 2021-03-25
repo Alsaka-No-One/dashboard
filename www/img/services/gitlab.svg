@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Keyshape -->
+<svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 64 64" style="white-space: pre;">
+    <g filter="none" transform="translate(32,32)">
+        <path id="Fill-4" d="M105.061,193.655L105.061,193.655L143.701,74.734L66.4214,74.734L105.061,193.655L105.061,193.655Z" fill="#E24329" transform="translate(0.0201973,11.2507) scale(0.301084,0.301084) translate(-105.061,-134.195)"/>
+        <path id="Fill-6" fill="#FC6D26" transform="translate(-31.612,-29.1531) scale(0.301084,0.301084)"/>
+        <path id="Fill-8" d="M105.061,193.655L66.4214,74.7338L12.2684,74.7338L105.061,193.655Z" fill="#FC6D26" transform="translate(-13.9489,11.2504) scale(0.301084,0.301084) translate(-58.6649,-134.194)"/>
+        <path id="Fill-10" fill="#FC6D26" transform="translate(-31.612,-29.1531) scale(0.301084,0.301084)"/>
+        <path id="Fill-12" d="M12.2685,74.7341L12.2685,74.7341L0.5265,110.873C-0.5445,114.169,0.6285,117.78,3.4325,119.817L105.062,193.655L12.2685,74.7341Z" fill="#FCA326" transform="translate(-15.7756,11.2507) scale(0.301084,0.301084) translate(-52.5979,-134.195)"/>
+        <path id="Fill-14" fill="#FC6D26" transform="translate(-31.612,-29.1531) scale(0.301084,0.301084)"/>
+        <path id="Fill-16" d="M12.2685,74.7342L66.4215,74.7342L43.1485,3.1092C41.9515,-0.5768,36.7375,-0.5758,35.5405,3.1092L12.2685,74.7342Z" fill="#E24329" transform="translate(-19.7658,-17.8506) scale(0.301084,0.301084) translate(-39.345,-37.5396)"/>
+        <path id="Fill-18" d="M105.061,193.655L143.701,74.7338L197.854,74.7338L105.061,193.655Z" fill="#FC6D26" transform="translate(13.9896,11.2504) scale(0.301084,0.301084) translate(-151.458,-134.194)"/>
+        <path id="Fill-20" d="M197.854,74.7341L197.854,74.7341L209.596,110.873C210.667,114.169,209.494,117.78,206.69,119.817L105.061,193.655L197.854,74.7341Z" fill="#FCA326" transform="translate(15.8162,11.2507) scale(0.301084,0.301084) translate(-157.525,-134.195)"/>
+        <path id="Fill-22" d="M197.854,74.7342L143.701,74.7342L166.974,3.1092C168.171,-0.5768,173.385,-0.5758,174.582,3.1092L197.854,74.7342Z" fill="#E24329" transform="translate(19.8064,-17.8506) scale(0.301084,0.301084) translate(-170.778,-37.5396)"/>
+    </g>
+</svg>

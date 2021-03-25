@@ -1,0 +1,19 @@
+body {
+    background: var(--gray-light);
+}
+.jumbotron {
+    width: 100vw;
+    height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.jumbotron > * { margin: 10px; }
+.jumbotron > h1 {
+    font-size: 42pt;
+    text-shadow: 1px 1px 0 rgba(255,255,255,.5);
+}
+.jumbotron > p { font-size: 18pt; }
+.jumbotron > a { font-size: 14pt; }

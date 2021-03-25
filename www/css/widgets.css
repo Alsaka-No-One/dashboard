@@ -1,0 +1,366 @@
+@keyframes turn {
+    from { transform: rotate(0); }
+    to   { transform: rotate(360deg); }
+}
+
+.widget.weather-weather {
+    background: url("../img/widgets/weather/bg.png") center;
+    background-size: 256px;
+}
+.widget.weather-weather *::selection { background: rgba(255, 180, 0, 0.8); }
+.widget.weather-weather .body {
+    background-size: 80px;
+    background-repeat: no-repeat;
+    background-position: top -15px right -10px;
+}
+
+.widget.weather-weather .body > .row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.widget.weather-weather .body > .row > * { margin: 0; }
+.widget.weather-weather .body > .row > h2 { font-size: 12pt; }
+.widget.weather-weather .body > .row:first-child > p { margin-right: 75px; }
+.widget.weather-weather .body > .row:first-child > h2 { margin: 20px 0; }
+
+.widget.exchange-exchange {
+    background: url("../img/widgets/exchange/bg.png") no-repeat;
+    background-position: 140px -20px;
+    background-size: 320px;
+}
+.widget.exchange-exchange *::selection { background: rgba(255, 180, 0, 0.8); }
+.widget.exchange-exchange .body {
+    background-size: 80px;
+    background-repeat: no-repeat;
+    background-position: top -15px right -10px;
+    justify-content: center;
+}
+
+.widget.exchange-exchange .body > .row {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    justify-content: center;
+}
+.widget.exchange-exchange .body input { margin: 0 10px 0 0; }
+.widget.exchange-exchange .body > .row > h2 { font-size: 12pt; }
+
+.widget.time-clock {
+    background: url("../img/widgets/clock/bg.png") center;
+}
+.widget.time-clock .body {
+    align-items: center;
+    justify-content: center;
+}
+.widget.time-clock .digital {
+    padding: 10px;
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 42pt;
+    margin: 10px 10px 0 10px;
+    text-align: center;
+    background: rgba(0, 0, 0, .2);
+}
+.widget.time-clock .analog {
+    width: 140px;
+    height: 140px;
+    background: url("../img/widgets/clock/clock.svg") no-repeat;
+}
+.widget.time-clock .analog > div, .widget.time-clock .analog > div > div {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    animation: turn infinite linear;
+}
+.widget.time-clock .body > p {
+    margin: 10px 0 0 0;
+}
+.widget.time-clock .analog > .h > div {
+    animation-duration: 12960000s;
+    background: url("../img/widgets/clock/h.svg") no-repeat;
+}
+.widget.time-clock .analog > .m > div {
+    animation-duration: 3600s;
+    background: url("../img/widgets/clock/m.svg") no-repeat;
+}
+.widget.time-clock .analog > .s > div {
+    animation-duration: 60s;
+    background: url("../img/widgets/clock/s.svg") no-repeat;
+}
+
+.widget.gitlab-repository {
+    background: url("../img/widgets/gitlab/bg.png") no-repeat;
+    background-position: 50px 40px;
+    background-size: 320px;
+}
+.widget.gitlab-repository .body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+.widget.gitlab-repository .header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.widget.gitlab-repository .header > .namespace {
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-size: contain;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, .1);
+    background-color: #fff;
+    z-index: 2;
+}
+.widget.gitlab-repository .namespace-popup {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    background: #fff;
+    margin: 0 0 0 90px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: collapse;
+    z-index: 1;
+    transition: all .2s ease-in-out;
+}
+.widget.gitlab-repository .namespace:hover + .namespace-popup, .widget.gitlab-repository .namespace-popup:hover {
+    visibility: visible;
+    opacity: 1;
+}
+.widget.gitlab-repository .namespace-popup > p { margin: 6px 0; }
+.widget.gitlab-repository .namespace-popup > .path {
+    opacity: .7;
+    font-style: italic;
+}
+.widget.gitlab-repository .header > h2 { margin: 0; }
+.widget.gitlab-repository .header > i {
+    font-size: 12pt;
+    opacity: .6;
+    margin: 0 10px;
+}
+.widget.gitlab-repository .date {
+    font-size: 10pt;
+    opacity: .2;
+    font-style: italic;
+    margin: 0;
+}
+.widget.gitlab-repository .title {
+    display: flex;
+    width: 100%;
+    font-weight: bold;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin: 0 5px;
+}
+.widget.gitlab-repository .title > p {
+    flex: 1;
+    margin: 10px 0 5px 0;
+}
+.widget.gitlab-repository .files {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 5px;
+}
+.widget.gitlab-repository .title > p:first-child,
+.widget.gitlab-repository .file > p:first-child { flex: .4; }
+.widget.gitlab-repository .file > p {
+    flex: 1;
+    margin: 10px 0;
+}
+.widget.gitlab-repository .file {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 10px;
+    background: rgba(0, 0, 0, .04);
+}
+.widget.gitlab-repository .file-name { font-family: monospace; }
+.widget.gitlab-repository .file:nth-child(odd) { background: rgba(0, 0, 0, .08); }
+
+.widget.gitlab-profile {
+    background: url("../img/widgets/gitlab/bg.png") no-repeat;
+    background-position: 60px 50px;
+    background-size: 320px;
+}
+.widget.gitlab-profile .header {
+    display: flex;
+    margin: 10px 0 0 0;
+    align-items: center;
+}
+.widget.gitlab-profile .names { margin: 0 0 0 20px; }
+.widget.gitlab-profile .names > * { margin: 5px 0; }
+.widget.gitlab-profile .username {
+    font-size: 12pt;
+    font-style: italic;
+    color: #666;
+}
+.widget.gitlab-profile .avatar {
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    border-radius: 80px;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, .1);
+}
+.widget.gitlab-profile .stats { display: flex; }
+.widget.gitlab-profile .stats > a {
+    font-size: 14pt;
+    color: #666;
+    margin: 0 10px;
+}
+.widget.gitlab-profile .title {
+    display: flex;
+    width: 100%;
+    font-weight: bold;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0 5px;
+}
+.widget.gitlab-profile .title > p {
+    flex: 1;
+    margin: 10px 0 5px 0;
+}
+.widget.gitlab-profile .projects {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 5px;
+}
+.widget.gitlab-profile .title > p:first-child,
+.widget.gitlab-profile .project > p:first-child { flex: .4; }
+.widget.gitlab-profile .project {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    background: rgba(0, 0, 0, .04);
+}
+.widget.gitlab-profile .project > p {
+    flex: 1;
+    margin: 10px 0;
+}
+.widget.gitlab-profile .project-name { font-family: monospace; }
+.widget.gitlab-profile .project:nth-child(odd) { background: rgba(0, 0, 0, .08); }
+
+.widget.github-repository {
+    background: url("../img/widgets/github/bg.png") no-repeat;
+    background-position: 60px 50px;
+    background-size: 320px;
+}
+.widget.github-repository .body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+.widget.github-repository .header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.widget.github-repository .header > .namespace {
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-size: contain;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, .1);
+    background-color: #fff;
+    z-index: 2;
+}
+.widget.github-repository .namespace-popup {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    background: #fff;
+    margin: 0 0 0 90px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: collapse;
+    z-index: 1;
+    transition: all .2s ease-in-out;
+}
+.widget.github-repository .namespace:hover + .namespace-popup, .widget.github-repository .namespace-popup:hover {
+    visibility: visible;
+    opacity: 1;
+}
+.widget.github-repository .namespace-popup > p { margin: 6px 0; }
+.widget.github-repository .namespace-popup > .path {
+    opacity: .7;
+    font-style: italic;
+}
+.widget.github-repository .header > h2 { margin: 0; }
+.widget.github-repository .header > i {
+    font-size: 12pt;
+    opacity: .6;
+    margin: 0 10px;
+}
+.widget.github-repository .date {
+    font-size: 10pt;
+    opacity: .2;
+    font-style: italic;
+    margin: 0;
+}
+.widget.github-repository .title {
+    display: flex;
+    width: 100%;
+    font-weight: bold;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin: 0 5px;
+}
+.widget.github-repository .title > p {
+    flex: 1;
+    margin: 10px 0 5px 0;
+}
+.widget.github-repository .files {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 5px;
+}
+.widget.github-repository .title > p:first-child,
+.widget.github-repository .file > p:first-child { flex: .4; }
+.widget.github-repository .file > p {
+    flex: 1;
+    margin: 10px 0;
+}
+.widget.github-repository .file {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 10px;
+    background: rgba(0, 0, 0, .04);
+}
+.widget.github-repository .file-name { font-family: monospace; }
+.widget.github-repository .file:nth-child(odd) { background: rgba(0, 0, 0, .08); }
+
+.widget.github-profile {
+    background: url("../img/widgets/github/bg.png") no-repeat;
+    background-position: 60px 50px;
+    background-size: 320px;
+}
+.widget.github-profile .header {
+    display: flex;
+    margin: 10px 0;
+    align-items: center;
+}
+.widget.github-profile .names { margin: 0 0 0 20px; }
+.widget.github-profile .names > * { margin: 5px 0; }
+.widget.github-profile .avatar {
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    border-radius: 80px;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, .1);
+}
+.widget.github-profile .stats { display: flex; }
+.widget.github-profile .stats > a {
+    font-size: 14pt;
+    color: #666;
+    margin: 0 10px;
+}

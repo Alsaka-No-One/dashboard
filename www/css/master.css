@@ -1,0 +1,180 @@
+:root {
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-light: #ccc;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+}
+
+@font-face {
+    font-family: "Font Awesome";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("../fonts/fa.woff2") format("woff2");
+    src: url("../fonts/fa.woff") format("woff");
+}
+
+body {
+    font-family: "Font Awesome", "Helvetica Neue";
+    margin: 60px 0 0 0;
+    background: #fff;
+}
+
+body.loading * { transition: none !important; }
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    padding: 0 10px;
+    align-items: center;
+    color: #fff;
+    background: #54a9eb;
+    height: 60px;
+    z-index: 1000;
+}
+.navbar *::selection { background: rgba(255, 200, 0, 0.6); }
+.navbar a.logo {
+    height: 60px;
+    width: 160px;
+    margin-right: 10px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: auto 50px;
+    background-position: 0;
+    background-image: url("../img/logo.svg");
+}
+.navbar .logo:hover { background-image: url("../img/logo_hover.svg"); }
+.navbar a {
+    text-decoration: none;
+    padding: 20px 8px;
+    color: rgba(255, 255, 255, 0.85);
+    transition: color .1s linear;
+}
+.navbar a.right { margin-left: auto; }
+.navbar a.active,
+.navbar a:hover { color: rgba(255, 255, 255, 1); }
+.navbar a.active { font-weight: bold; }
+
+button, .btn {
+    --color: white;
+    --bg-color: var(--gray);
+    display: inline-block;
+    text-decoration: none;
+    background: var(--bg-color);
+    font-size: 16pt;
+    padding: 10px 15px;
+    margin: 5px;
+    color: white;
+    border: 2px solid var(--bg-color);
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    transition: filter linear .15s, background linear .1s;
+}
+button:hover:not(:disabled), .btn:hover:not(:disabled) { filter: brightness(1.1); }
+button:active, .btn:active { box-shadow: inset 0 0 10px rgba(0, 0, 0, .3); }
+
+button.outline, .btn.outline {
+    background: transparent;
+    color: var(--bg-color);
+}
+button.outline:hover, .btn.outline:hover {
+    color: var(--color);
+    background: var(--bg-color);
+    filter: none;
+}
+
+button.round, .btn.round { border-radius: 128px; padding: 10px 30px; }
+
+button.red, .btn.red { --bg-color: var(--red); }
+button.green, .btn.green { --bg-color: var(--green); }
+button.blue, .btn.blue { --bg-color: var(--blue); }
+
+button.large, .btn.large {
+    font-size: 20pt;
+    padding: 10px 40px;
+}
+
+button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+input {
+    font-size: 12pt;
+    padding: 5px;
+    background: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+    outline: 0;
+    transition: box-shadow .1s linear;
+}
+input:focus { box-shadow: 0 0 0 3px rgba(100, 100, 255, .25); }
+input[readonly=true] {
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, .04);
+}
+
+a {
+    color: #55f;
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover { color: #33f; }
+
+select {
+    padding: 5px 27px 5px 7px;
+    border: 1px solid gray;
+    appearance: none;
+    border-radius: 5px;
+    outline: none;
+    background: url("../img/select-arrow.svg") no-repeat;
+    background-position: right 8px center;
+    background-size: 12px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 40px 15px 0 15px;
+}
+
+.centered { text-align: center; }
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+.flex-1 { flex: 1; }
+.ml-auto: { margin-left: auto; }
+.mr-auto: { margin-right: auto; }
+
+@media (max-width: 576px) {
+    .container {
+        padding-top: 5px;
+        width: auto;
+    }
+}

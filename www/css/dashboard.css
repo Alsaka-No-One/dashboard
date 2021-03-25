@@ -1,0 +1,230 @@
+@keyframes balance {
+    0%   { transform: rotate(2deg); }
+    25%  { transform: rotate(-2deg); }
+    50%  { transform: rotate(2deg); }
+    75%  { transform: rotate(-2deg); }
+    100% { transform: rotate(2deg); }
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 80px 40px;
+    perspective: 1e3px;
+}
+.widget-slot {
+    width: 302px;
+    height: 230px;
+    padding: 20px;
+    margin: 10px;
+    transition: width .25s ease-in-out, height .25s ease-in-out;
+}
+.dragging { cursor: grabbing !important; }
+.dragging .widget-slot { transition: none; }
+.widget-slot.collapsed {
+    transition: none;
+    width: 0;
+    padding: 5px;
+    background: rgba(10, 255, 10, .2);
+    border: 2px dashed #5a5;
+    border-radius: 40px;
+}
+.widget {
+    --bg-color: #fff;
+    position: absolute;
+    width: 340px;
+    height: 240px;
+    margin: 0;
+    padding: 0;
+    color: var(--color);
+    background: var(--bg-color);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, .15);
+    transform-style: preserve-3d;
+    transition: transform .5s ease-in-out;
+}
+.widget.flipped { transform: rotateY(180deg); }
+
+.widget .side {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    z-index: 1;
+}
+.widget .side:nth-child(2) {
+    transform: rotateY(-180deg);
+    background: #fff;
+    z-index: 2;
+}
+
+.widget.dragged {
+    z-index: 1;
+    opacity: .8;
+    pointer-events: none;
+    touch-action: none;
+    cursor: grabbing;
+    transform-origin: 50% 20%;
+    animation: balance infinite 1s;
+}
+.widget.deleted {
+    transform-origin: 90% 10%;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform .25s ease-in-out, opacity .25s ease-in-out;
+}
+.widget header {
+    display: flex;
+    cursor: grab;
+    user-select: none;
+}
+.dragging .widget header { cursor: inherit; }
+.widget header > h1 {
+    margin: 0;
+    margin-right: auto;
+}
+.widget header > .icons {
+    margin-top: -10px;
+    margin-right: -10px;
+}
+.widget header > .icons > i {
+    margin: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 40px;
+    text-align: center;
+    line-height: 29px;
+    color: var(--color);
+    cursor: pointer;
+    background: rgba(100, 100, 100, 0);
+    transition: background .2s linear;
+}
+.widget header > .icons > .fa-times { color: #f33; }
+.widget header > .icons > .fa-wrench { opacity: .6; }
+.widget header > .icons > i:hover { background: rgba(100, 100, 100, .3); }
+.widget .body {
+    display: flex;
+    flex-direction: column;
+    height: 170px;
+}
+.widget .spinner {
+    position: absolute;
+    width: 300px;
+    height: 170px;
+    opacity: .8;
+    background: url("../img/spinner.svg") no-repeat center;
+    background-size: 100px;
+}
+.widget .invalid-message {
+    display: flex;
+    height: 100%;
+    color: #f00;
+    font-size: 16pt;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.widget.new {
+    position: relative;
+    width: 340px;
+    height: 232px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32pt;
+    color: var(--blue);
+    border: 4px solid var(--blue);
+    background: rgba(100, 100, 255, .3);
+    cursor: pointer;
+    transform-origin: 50% 50%;
+    transition: all .1s linear;
+}
+.widget.new:hover {
+    transform: scale(1.02);
+    color: #88f;
+    border-color: #88f;
+}
+.widget.new:active {
+    transform: scale(1);
+    transition: none;
+}
+
+.overlay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1001;
+    background: rgba(0, 0, 0, .2);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    visibility: collapse;
+    transition: all .2s linear;
+}
+.overlay.shown {
+    opacity: 1;
+    visibility: visible;
+}
+.popup {
+    position: absolute;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    z-index: 1002;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, .2);
+    opacity: 0;
+    margin-top: -40px;
+    visibility: collapse;
+    transition: all .2s ease-in-out;
+}
+.popup.shown {
+    margin-top: 0;
+    opacity: 1;
+    visibility: visible;
+}
+.popup h1 {
+    margin: 0 0 20px 0;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid gray;
+}
+.popup > .body { margin: 20px 0 0 0; }
+
+.widget-params .controls {
+    display: flex;
+    margin-top: 20px;
+}
+.widget-params .controls > button { margin: 0; }
+.widget-params .controls > button:last-child { margin-left: auto; }
+
+.widget-params .param {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.widget-params .param > label { flex: 1; }
+
+.side .widget-params {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.side .widget-params > .controls { margin-top: auto; }
+.widget .widget-params button {
+    font-size: 12pt;
+    padding: 5px 20px;
+}
+
+@media (max-width: 576px) {
+    .dashboard { margin: 10px 0; width: 100%; }
+    .widget-slot.collapsed { width: 302px; height: 0; }
+}
