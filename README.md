@@ -16,11 +16,6 @@
 1. `cd` into the repository
 1. run `docker-compose up -d`
 
-In either case, you will need to create service applications and provide secrets in `./config/secrets/`.
-
-# Documentation
-The project's documentation can be found on the repository [wiki page](../../wiki).
-
 # Authors
 @Volifter\
 @Alsaka-No-One
